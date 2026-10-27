@@ -4,7 +4,7 @@ SynGrid explores how generated wind and electricity-demand scenarios can inform 
 
 ![IRAI 2026 presentation poster](figures/IRAI2026_poster_preview.png)
 
-Wind generation and demand do not follow one fixed forecast. We trained a conditional diffusion model to generate paired, 24-hour wind and load scenarios from the preceding 48 hours of data. We compared those scenarios with simpler baselines, checked them against empirical feasibility limits, and used the generated **load** trajectories in optimal power flow (OPF) tests on the IEEE 30-bus case.
+Wind generation and demand do not follow one fixed forecast. In Python, we trained a conditional diffusion model to generate paired, 24-hour wind and load scenarios from the preceding 48 hours of data. We compared those scenarios with simpler baselines and checked them against empirical feasibility limits. We then used MATLAB and MATPOWER to test the generated **load** trajectories through optimal power flow (OPF) on the IEEE 30-bus case.
 
 The poster presents a later, larger dispatch study: **24,000 OPF runs with a 59.19% success rate**. The dispatch scripts and results here cover an earlier **480-run experiment with a 93.54% success rate**. They are different experiments; the larger poster result cannot be reproduced from the files in this repository.
 
@@ -37,7 +37,7 @@ The diffusion model has the lowest load CRPS and joint energy score in this comp
 
 We then clipped negative wind/load values and hourly changes above the 99th-percentile absolute ramps measured in the training targets. Across the 50 test windows, this removed **232 negative wind entries and 2,597 wind-ramp violations**. The test energy score changed from **32,432.48 to 32,293.74**. These empirical checks do not establish full physical or network feasibility. The [feasibility comparison](results/ramp_feasible_probabilistic_metrics_comparison_50.csv) gives the results for both splits.
 
-For the dispatch experiment, we converted generated **load** scenarios into uniform load-scaling factors for MATPOWER's IEEE 30-bus case. Of **480 independent OPF runs** (20 scenarios × 24 hours), **449 succeeded and 31 failed**. The **93.54% OPF success rate** describes convergence in this setup; it is not a forecast-accuracy score or a reliability guarantee. The [dispatch summary](results/case30_test_sample0_24h_dispatch_summary.csv) records each run.
+For the dispatch experiment, we derived uniform load-scaling factors from generated **load** scenarios, then used MATLAB scripts and MATPOWER to run OPF on the IEEE 30-bus case. Of **480 independent runs** (20 scenarios × 24 hours), **449 succeeded and 31 failed**. The **93.54% OPF success rate** describes convergence in this setup; it is not a forecast-accuracy score or a reliability guarantee. The [dispatch summary](results/case30_test_sample0_24h_dispatch_summary.csv) records each run.
 
 ![OPF success across scenarios and hours](figures/case30_24h_dispatch_success_heatmap.png)
 
@@ -63,6 +63,3 @@ The MATLAB scripts use **MATPOWER 8.1** on the MATLAB path. Copy `results/case30
 - The IEEE 30-bus experiment scales bus demand uniformly and solves each hour independently. It does **not** inject generated wind into the buses, schedule reserves, enforce capacity ceilings, or solve a coupled multi-period OPF.
 - The feasibility adjustment enforces non-negativity and empirical ramp limits. It is not a complete physical or network-feasibility model.
 - The large raw OPSD CSV and generated NumPy training arrays are omitted. The included processed hourly series is sufficient to rebuild the arrays with the listed scripts, but the unbundled raw file is needed to repeat the raw-data cleaning step.
-- The conference poster documents the larger 24,000-run study, but its outputs and reproduction code are not included here. A manuscript and formal publication link are also not available in this repository.
-
-The repository does not currently specify an open-source licence.
