@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Probabilistic scenario-quality comparison on the 50-sample validation and test subsets. Lower values are better.}
+  \label{tab:probabilistic_metrics_comparison}
+  \begin{tabular}{llrrr}
+    \toprule
+    \textbf{Model} & \textbf{Split} & \textbf{Wind CRPS} & \textbf{Load CRPS} & \textbf{Energy Score} \\
+    \midrule
+    Diffusion & Test & 5231.56 & 1974.40 & 32432.48 \\
+    Diffusion & Validation & 7128.41 & 2153.61 & 42793.21 \\
+    Linear Regression & Test & 5015.03 & 3189.96 & 36190.77 \\
+    Linear Regression & Validation & 7433.43 & 3495.02 & 50359.21 \\
+    Persistence & Test & 5804.28 & 9149.97 & 65116.32 \\
+    Persistence & Validation & 6296.75 & 9795.28 & 68589.15 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

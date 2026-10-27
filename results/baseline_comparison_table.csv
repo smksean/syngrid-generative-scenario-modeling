@@ -1,0 +1,5 @@
+model,split,load_mae,load_rmse,wind_mae,wind_rmse,n_samples,horizon
+persistence,val,8958.57,11339.93,4219.07,6076.76,7549,24
+linear_regression,val,2862.3,4174.85,4098.23,5746.14,7549,24
+persistence,test,8958.57,11339.93,4219.07,6076.76,7526,24
+linear_regression,test,2907.67,4132.91,4634.36,6549.57,7526,24

@@ -1,0 +1,3 @@
+split,n_scenarios,horizon,wind_mean_std,load_mean_std,wind_min,wind_max,load_min,load_max,wind_first_hour_bias,load_first_hour_bias,neg_wind,neg_load
+val_sample0,20,24,2765.52,2754.81,-2347.7,18646.29,46554.3,75720.25,-883.47,-688.48,4,0
+test_sample0,20,24,3652.43,2267.97,-2782.74,18445.98,44076.35,74598.11,495.53,-403.88,17,0

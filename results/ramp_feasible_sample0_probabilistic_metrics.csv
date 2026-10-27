@@ -1,0 +1,5 @@
+split,scenario_type,sample_id,n_scenarios,horizon,wind_crps_mean,load_crps_mean,joint_energy_score
+val,raw,0,20,24,11690.79,2916.81,64209.59
+val,ramp_feasible,0,20,24,11772.43,2901.82,64535.59
+test,raw,0,20,24,1742.22,1393.06,13553.3
+test,ramp_feasible,0,20,24,1726.88,1393.06,13425.79

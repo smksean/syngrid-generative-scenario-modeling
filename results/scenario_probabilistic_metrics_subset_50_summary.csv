@@ -1,0 +1,3 @@
+split,wind_crps_mean_mean,wind_crps_mean_std,wind_crps_mean_min,wind_crps_mean_max,load_crps_mean_mean,load_crps_mean_std,load_crps_mean_min,load_crps_mean_max,joint_energy_score_mean,joint_energy_score_std,joint_energy_score_min,joint_energy_score_max
+test,5231.56,3149.02,1514.43,13283.61,1974.4,1299.03,749.31,5327.88,32432.48,16384.66,11392.27,70609.97
+val,7128.41,2521.11,3876.96,12784.52,2153.61,809.46,959.22,4245.83,42793.21,13577.67,22393.31,75366.79

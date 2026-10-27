@@ -1,0 +1,7 @@
+model,split,wind_crps_mean_mean,wind_crps_mean_std,load_crps_mean_mean,load_crps_mean_std,joint_energy_score_mean,joint_energy_score_std
+diffusion,test,5231.56,3149.02,1974.4,1299.03,32432.48,16384.66
+diffusion,val,7128.41,2521.11,2153.61,809.46,42793.21,13577.67
+linear_regression,test,5015.03,3551.17,3189.96,867.25,36190.77,17415.95
+linear_regression,val,7433.43,2755.98,3495.02,1143.97,50359.21,12035.04
+persistence,test,5804.28,3608.3,9149.97,2624.88,65116.32,20061.47
+persistence,val,6296.75,3073.97,9795.28,2859.92,68589.15,15632.47

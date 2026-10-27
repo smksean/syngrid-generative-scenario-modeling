@@ -1,0 +1,2 @@
+n_scenarios,success_count,failure_count,success_rate,load_scale_min,load_scale_mean,load_scale_max,successful_cost_min,successful_cost_mean,successful_cost_max,failed_scenario_ids
+20,19,1,0.95,0.957856,0.994291,1.034578,543.92,571.23,600.55,1

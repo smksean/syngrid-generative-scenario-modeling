@@ -1,0 +1,7 @@
+split,channel,n_samples,n_scenarios,horizon,mean_coverage,std_coverage,target_coverage
+test,wind,50,20,24,0.73,0.3172,0.9
+test,load,50,20,24,0.7833,0.2603,0.9
+test,joint,50,20,24,0.5908,0.352,0.9
+val,wind,50,20,24,0.7167,0.3221,0.9
+val,load,50,20,24,0.7667,0.201,0.9
+val,joint,50,20,24,0.56,0.3733,0.9

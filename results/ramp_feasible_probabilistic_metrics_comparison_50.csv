@@ -1,0 +1,5 @@
+split,variant,n_samples,n_scenarios,wind_crps_mean,wind_crps_std,load_crps_mean,load_crps_std,joint_energy_score_mean,joint_energy_score_std,wind_ramp_violations,load_ramp_violations,negative_wind_entries,negative_load_entries
+test,raw_diffusion,50,20,5231.56,3149.02,1974.4,1299.03,32432.48,16384.66,2597,115,232,0
+test,ramp_feasible_diffusion,50,20,5215.47,3152.46,1973.86,1297.72,32293.74,16404.2,0,0,0,0
+val,raw_diffusion,50,20,7128.41,2521.11,2153.61,809.46,42793.21,13577.67,4240,123,39,0
+val,ramp_feasible_diffusion,50,20,7046.13,2564.74,2153.86,809.41,42289.11,13837.73,0,0,0,0

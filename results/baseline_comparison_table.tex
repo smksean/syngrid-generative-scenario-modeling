@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Baseline forecasting results for 24-hour ahead load and wind prediction.}
+  \label{tab:baseline_results}
+  \begin{tabular}{llrrrr}
+    \toprule
+    \textbf{Model} & \textbf{Split} & \textbf{Load MAE} & \textbf{Load RMSE} & \textbf{Wind MAE} & \textbf{Wind RMSE} \\
+    \midrule
+    Persistence & Validation & 8958.57 & 11339.93 & 4219.07 & 6076.76 \\
+    Linear Regression & Validation & 2862.30 & 4174.85 & 4098.23 & 5746.14 \\
+    Persistence & Test & 8958.57 & 11339.93 & 4219.07 & 6076.76 \\
+    Linear Regression & Test & 2907.67 & 4132.91 & 4634.36 & 6549.57 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

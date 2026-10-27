@@ -1,0 +1,2 @@
+model,load_mae,load_rmse,wind_mae,wind_rmse,n_samples,horizon,first_forecast_timestamp,last_forecast_timestamp
+persistence,8958.5654,11339.9307,4219.0674,6076.7583,50255,24,2015-01-03 00:00:00+00:00,2020-09-30 00:00:00+00:00

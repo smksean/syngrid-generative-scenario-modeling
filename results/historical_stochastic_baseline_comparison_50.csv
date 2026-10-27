@@ -1,0 +1,3 @@
+model,split,wind_crps_mean_mean,wind_crps_mean_std,load_crps_mean_mean,load_crps_mean_std,joint_energy_score_mean,joint_energy_score_std
+historical_stochastic,test,7441.67,3998.35,5461.63,1236.0,51456.35,10326.94
+historical_stochastic,val,15197.75,5032.18,5605.98,1667.51,80746.15,16829.73

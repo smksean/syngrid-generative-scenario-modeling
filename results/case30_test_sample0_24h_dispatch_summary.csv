@@ -1,0 +1,2 @@
+n_dispatch_cases,n_scenarios,horizon,success_count,failure_count,success_rate,load_scale_min,load_scale_mean,load_scale_max,successful_cost_min,successful_cost_mean,successful_cost_max,n_failed_scenarios
+480,20,24,449,31,0.9354,0.791522,0.970955,1.088219,426.21,552.28,667.5,10

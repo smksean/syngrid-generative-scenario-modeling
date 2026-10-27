@@ -1,0 +1,2 @@
+sample_id,n_scenarios,horizon,wind_mean_std,load_mean_std,wind_min,wind_max,load_min,load_max,wind_first_hour_ensemble_mean,wind_first_hour_true,wind_first_hour_bias,load_first_hour_ensemble_mean,load_first_hour_true,load_first_hour_bias,neg_wind_before,neg_load_before,neg_wind_after,neg_load_after
+0,20,24,14838.7,3597.66,-4251.06,124829.8,42080.32,80972.04,6789.36,7497.0,-707.64,57083.38,57911.0,-827.62,8,0,0,0
