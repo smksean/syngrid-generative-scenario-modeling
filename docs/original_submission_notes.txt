@@ -1,0 +1,88 @@
+Generative Scenario Modeling for Robust Dispatch in Renewable-Integrated Smart Grids
+IEEE IES Generative AI Challenge 2026
+
+Package prepared: 2026-04-29
+
+This package contains the current code and result artifacts for the scenario-to-dispatch
+pipeline. The project generates 24-hour joint wind/load scenarios with a conditional
+diffusion model, evaluates scenario quality, applies a first ramp-rate feasibility
+correction, and links scenario-derived load uncertainty to IEEE 30-bus MATPOWER OPF runs.
+
+Included folders
+----------------
+src/
+  Python scripts for data preparation, baselines, diffusion training/sampling,
+  probabilistic metrics, feasibility checks, dispatch summaries, LaTeX table export,
+  and plotting.
+
+dispatch/
+  MATLAB scripts for MATPOWER IEEE 30-bus OPF checks, scaled-load runs, and
+  scenario-derived 24-hour dispatch evaluation.
+
+results/
+  CSV/TEX/TXT outputs produced during the current milestone.
+  Start with results/current_milestone_artifacts.txt for the full artifact map.
+
+figures/
+  Generated figures, including scenario fans and dispatch visualizations.
+
+checkpoints/
+  Best normalized diffusion checkpoint:
+  diffusion_model_normalized_epoch_best.pt
+
+data/processed/
+  Lightweight normalization statistics used by the diffusion pipeline:
+  diffusion_normalization_stats.npz
+
+Deliberately excluded
+---------------------
+Raw OPSD data, full processed NumPy window arrays, virtual environments, caches, and
+temporary files are not included to keep the package compact. The full local workspace
+contains those regeneration inputs if needed.
+
+Most important result files
+---------------------------
+results/probabilistic_metrics_comparison_50.csv
+results/probabilistic_metrics_comparison_50.tex
+results/scenario_feasibility_ramp_sample0.csv
+results/ramp_feasible_sample0_probabilistic_metrics.csv
+results/case30_baseline_results.csv
+results/case30_baseline_generators.csv
+results/case30_baseline_buses.csv
+results/case30_scaled_load_results.csv
+results/case30_test_sample0_dispatch_summary.csv
+results/case30_test_sample0_24h_dispatch_summary.csv
+results/case30_test_sample0_24h_dispatch_summary.tex
+figures/case30_scenario_dispatch_cost.png
+figures/case30_24h_dispatch_success_heatmap.png
+
+Key current outcomes
+--------------------
+The best diffusion checkpoint reached validation loss 0.0877 at epoch 19.
+
+On the 50-sample probabilistic comparison, the diffusion scenarios improve load CRPS
+and energy score relative to deterministic baselines, while linear regression remains
+slightly better on test wind CRPS.
+
+For test sample 0, ramp-rate feasibility correction removes negative wind values and
+sample-level ramp violations in the generated scenarios.
+
+For IEEE 30-bus MATPOWER dispatch, the baseline OPF succeeds. Scenario-derived 24-hour
+load-scale dispatch runs cover 480 OPFs, with 449 successful OPFs and 31 failed OPFs.
+This gives a current 93.54 percent success rate for the load-only dispatch stress test.
+
+Run notes
+---------
+Python scripts were run from the repository root. Some scripts require the full local
+processed data arrays that are not included in this compact package.
+
+MATPOWER dispatch scripts were run in MATLAB Online with MATPOWER 8.1 on the MATLAB
+path. To rerun dispatch, make sure MATPOWER is installed and the required CSV input
+files from results/ are available in the MATLAB working directory.
+
+Current caveats
+---------------
+The dispatch layer is intentionally still lightweight. It maps generated load scenarios
+to uniform IEEE 30-bus load scaling and evaluates OPF feasibility/cost. Wind injection,
+capacity-ceiling enforcement, reserve scheduling, and a full multi-period OPF are not
+yet implemented.

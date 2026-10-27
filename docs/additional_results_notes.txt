@@ -1,0 +1,124 @@
+Task 1 and Task 2 Results Package
+Generative Scenario Modeling for Robust Dispatch in Renewable-Integrated Smart Grids
+
+Prepared: 2026-04-29
+
+This folder contains the two new result files produced after the main repository
+package was created.
+
+Files
+-----
+historical_stochastic_baseline_comparison_50.csv
+  Task 1 result. This is a historical stochastic baseline evaluated in the same
+  aggregated format as results/probabilistic_metrics_comparison_50.csv.
+
+ramp_feasible_probabilistic_metrics_comparison_50.csv
+  Task 2 result. This compares raw diffusion scenarios against ramp-feasible
+  diffusion scenarios over the same 50-sample validation/test subset.
+
+Task 1: Historical stochastic baseline
+--------------------------------------
+Method:
+  For each evaluation instance, K historical 24-hour joint wind/load windows
+  were sampled uniformly at random from Y_train and treated as scenarios.
+
+Conventions:
+  Validation samples: sample IDs 0 to 49
+  Test samples: sample IDs 0 to 49
+  Scenarios per sample: K = 20
+  Random seed: 2026
+  Channel order: wind first, load second
+
+Output columns:
+  model
+  split
+  wind_crps_mean_mean
+  wind_crps_mean_std
+  load_crps_mean_mean
+  load_crps_mean_std
+  joint_energy_score_mean
+  joint_energy_score_std
+
+Key values:
+  Test wind CRPS mean: 7441.67
+  Test load CRPS mean: 5461.63
+  Test energy score mean: 51456.35
+
+  Validation wind CRPS mean: 15197.75
+  Validation load CRPS mean: 5605.98
+  Validation energy score mean: 80746.15
+
+Interpretation:
+  This baseline is intentionally simple. It asks whether randomly sampled
+  historical 24-hour profiles can compete with the conditional diffusion model.
+  The current result shows that the diffusion model gives stronger scenario
+  quality than this historical sampling baseline on the same 50-sample subset.
+
+Task 2: Ramp-feasibility over the 50-sample subset
+-------------------------------------------------
+Method:
+  The existing sample-0 feasibility correction was extended across the same
+  50 validation and 50 test samples used for the probabilistic comparison.
+
+Correction applied:
+  1. Clip wind and load to non-negative values.
+  2. Clip hourly ramps using 99th-percentile absolute ramp limits from Y_train.
+
+Ramp limits:
+  Wind: 2737 MW/hour
+  Load: 8038 MW/hour
+
+Conventions:
+  Validation samples: sample IDs 0 to 49
+  Test samples: sample IDs 0 to 49
+  Scenarios per sample: K = 20
+  Random seed: 2026
+  Same diffusion checkpoint: diffusion_model_normalized_epoch_best.pt
+
+Output columns:
+  split
+  variant
+  n_samples
+  n_scenarios
+  wind_crps_mean
+  wind_crps_std
+  load_crps_mean
+  load_crps_std
+  joint_energy_score_mean
+  joint_energy_score_std
+  wind_ramp_violations
+  load_ramp_violations
+  negative_wind_entries
+  negative_load_entries
+
+Key values:
+  Test raw diffusion:
+    Wind ramp violations: 2597
+    Load ramp violations: 115
+    Negative wind entries: 232
+
+  Test ramp-feasible diffusion:
+    Wind ramp violations: 0
+    Load ramp violations: 0
+    Negative wind entries: 0
+    Energy score mean: 32293.74
+
+  Validation raw diffusion:
+    Wind ramp violations: 4240
+    Load ramp violations: 123
+    Negative wind entries: 39
+
+  Validation ramp-feasible diffusion:
+    Wind ramp violations: 0
+    Load ramp violations: 0
+    Negative wind entries: 0
+    Energy score mean: 42289.11
+
+Interpretation:
+  The ramp-feasibility correction removes negative values and ramp violations
+  across the full 50-sample validation/test subset while preserving nearly the
+  same probabilistic scenario quality.
+
+Notes
+-----
+These files are codebase outputs only. No manuscript files were edited.
